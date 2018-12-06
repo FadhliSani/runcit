@@ -1,0 +1,23 @@
+{
+  "name": "runcitku",
+  "version": "1.0.0",
+  "description": "website that help users to sell their goods that they don't use anymore.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FadhliSani/runcitku.git"
+  },
+  "author": "Fadhli Sani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FadhliSani/runcitku/issues"
+  },
+  "homepage": "https://github.com/FadhliSani/runcitku#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
