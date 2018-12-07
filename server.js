@@ -1,12 +1,17 @@
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const path = require('path');
 
-let app = express();
+const app = express();
+
+const items = require('./routes/items');
 
 const PORT = 3000;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+app.use('/items', items);
 
 app.get('/', (req, res) => {
     res.send('it works!');
