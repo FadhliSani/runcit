@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const config = require('./config/database');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 mongoose.connect(config.database, { useNewUrlParser: true });
 
@@ -19,8 +20,8 @@ app.use(bodyParser.json());
 app.use('/items', items);
 // app.use('/users', users);
 
-app.get('/', (req, res) => {
-    res.send('it works!');
+app.get('*', (req, res) => {
+    res.send(path.join(__dirname, 'public/index.html'));
 });
 
 app.listen(config.port, () => {
