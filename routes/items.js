@@ -41,13 +41,14 @@ router.get('/categories/:category', (req, res) => {
 // #POST new product
 router.post('/', (req, res) => {
     var newItem = new Item();
-    newItem.name = req.body.name;
-    newItem.price = req.body.price;
-    newItem.description = req.body.description;
-    newItem.date_updated = Date.now();
-    newItem.user_id = req.body.user_id;
-    newItem.location = req.body.location;
-    newItem.category = req.body.category;
+        newItem.name = req.body.name;
+        newItem.price = req.body.price;
+        newItem.description = req.body.description;
+        newItem.date_updated = Date.now();
+        newItem.user_id = req.body.user_id;
+        newItem.location = req.body.location;
+        newItem.region = req.body.region;
+        newItem.category = req.body.category;
     
     
     Item.addNewItem(newItem, (err, item) => {
@@ -63,13 +64,14 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     const id_params = req.params.id;
     var updatedItem = new Item();
-    updatedItem.name = req.body.name;
-    updatedItem.price = req.body.price;
-    updatedItem.description = req.body.description;
-    updatedItem.date_updated = Date.now();
-    updatedItem.user_id = req.body.user_id;
-    updatedItem.location = req.body.location;
-    updatedItem.category = req.body.category;
+        updatedItem.name = req.body.name;
+        updatedItem.price = req.body.price;
+        updatedItem.description = req.body.description;
+        updatedItem.date_updated = Date.now();
+        updatedItem.user_id = req.body.user_id;
+        updatedItem.location = req.body.location;
+        updatedItem.region = req.body.region;
+        updatedItem.category = req.body.category;
 
     Item.updateItem(id_params, updatedItem, (err, item) => {
         if(err){

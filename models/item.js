@@ -14,6 +14,7 @@ const itemSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    region: String,
     location: String,
     date_created: {
         type: Date,
@@ -65,6 +66,7 @@ module.exports.updateItem = function(id, data, callback) {
             "description": data.description,
             "user_id": data.user_id,
             "location": data.location,
+            "region": data.region,
             "date_updated": data.date_updated,
             "category": data.category
         }}
