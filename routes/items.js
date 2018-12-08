@@ -8,13 +8,30 @@ router.get('/', (req, res, next) => {
     res.send('Get all products');
 });
 
-// Get one product
+// Get product by id
 router.get('/:id', (req, res, next) => {
     res.send('Get one product');
 });
 
-// Update product
+// Get product by category
+router.get('/categories/:category', (req, res) => {
+    const param = req.params.category;
+    res.send('Get product by ' +param);
+});
 
-// Delete product 
+// #POST new product
+router.post('/:id', (req, res) => {
+    res.send('create new product');
+});
+
+// #Patch product
+router.patch('/:id', (req, res) => {
+    res.send('update product')
+});
+
+// #Delete Delete product 
+router.delete('/:id', (req, res) => {
+    res.send('delete product');
+});
 
 module.exports = router;
