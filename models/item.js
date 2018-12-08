@@ -6,20 +6,20 @@ const itemSchema = new mongoose.Schema({
         require: true
     },
     price: {
-        type: Number,
-        require: "Please enter price number"
+        type: String,
+        require: true
     },
-    description: {
-        type: String
-    },
+    description: String,
     user_id: {
         type: String,
-        require: "Please enter user id"
+        require: true
     },
-    location: {
-        type: String
-    },
+    location: String,
     date_created: {
+        type: Date,
+        default: Date.now
+    },
+    date_updated: {
         type: Date
     },
     category: {
@@ -27,7 +27,7 @@ const itemSchema = new mongoose.Schema({
     }
 });
 
-const Item = module.exports = mongoose.model('Item', itemSchema);
+const Item = module.exports = mongoose.model('Item', itemSchema, "items");
 
 // Get all items
 module.exports.findAllItems = function(callback) {
@@ -52,16 +52,26 @@ module.exports.findItemByName = function(name, callback) {
 }
 
 // add new item
-module.exports.addNewItem = function() {
-
+module.exports.addNewItem = function(item, callback) {
+    item.save(item, callback);
 }
 
 // update item
-module.exports.updateItem = function(id, callback) {
-
+module.exports.updateItem = function(id, data, callback) {
+    const query = {$set: 
+        { 
+            "name": data.name,
+            "price": data.price,
+            "description": data.description,
+            "user_id": data.user_id,
+            "location": data.location,
+            "date_updated": data.date_updated,
+            "category": data.category
+        }}
+    Item.findByIdAndUpdate(id, query, callback);
 }
 
 // delete item
 module.exports.deleteItem = function(id, callback) {
-
+    Item.findByIdAndDelete(id, callback)
 }
