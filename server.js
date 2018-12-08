@@ -4,7 +4,7 @@ const path = require('path');
 const config = require('./config/database');
 const mongoose = require('mongoose');
 
-mongoose.connect(config.database);
+mongoose.connect(config.database, { useNewUrlParser: true });
 
 const app = express();
 
