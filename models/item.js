@@ -54,7 +54,7 @@ module.exports.findItemByName = function(name, callback) {
 
 // add new item
 module.exports.addNewItem = function(item, callback) {
-    item.save(item, callback);
+    item.save(callback);
 }
 
 // update item

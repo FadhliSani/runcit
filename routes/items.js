@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
 const Item = require('../models/item');
+
+const protectRoute = passport.authenticate('jwt', {session: false})
 
 // Get all products
 router.get('/', (req, res, next) => {
@@ -39,7 +42,7 @@ router.get('/categories/:category', (req, res) => {
 });
 
 // #POST new product
-router.post('/', (req, res) => {
+router.post('/', protectRoute, (req, res) => {
     var newItem = new Item();
         newItem.name = req.body.name;
         newItem.price = req.body.price;
@@ -61,7 +64,7 @@ router.post('/', (req, res) => {
 });
 
 // #PUT update product
-router.put('/:id', (req, res) => {
+router.put('/:id', protectRoute,(req, res) => {
     const id_params = req.params.id;
     var updatedItem = new Item();
         updatedItem.name = req.body.name;
@@ -83,7 +86,7 @@ router.put('/:id', (req, res) => {
 });
 
 // #Delete Delete product 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', protectRoute,(req, res) => {
     const params = req.params.id;
     Item.deleteItem(params, (err, item) => {
         if(err){
