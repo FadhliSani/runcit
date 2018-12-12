@@ -6,10 +6,6 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    password: {
-        type: String,
-        required: true
-    },
     username: {
         type: String,
     },
@@ -18,6 +14,23 @@ const userSchema = mongoose.Schema({
         default: Date.now
     },
     date_updated: {
+        type: Date
+    },
+    roles: [{ 
+        type: String 
+    }],
+    isVerified: { 
+        type:Boolean, 
+        default: false 
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    passwordResetToken: {
+        type: String
+    },
+    passwordResetExpires: {
         type: Date
     }
 });
