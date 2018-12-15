@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Runcitku!';
+  title = 'Runcitku';
+
+  loginFormModalEmail = new FormControl('', Validators.email);
+  loginFormModalPassword = new FormControl('', Validators.required);
 }
