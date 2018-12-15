@@ -1,9 +1,106 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" [containerInside]="true">
+  <mdb-navbar-brand>
+    <a routerLink="/home" class="logo navbar-brand"><strong>{{ title }}</strong></a>
+  </mdb-navbar-brand>
+  <links>
+    <ul class="navbar-nav mr-auto">
+      <li routerLinkActive="active" class="nav-item" mdbWavesEffect>
+        <a routerLink="/home" class="nav-link waves-light">Home</a>
+      </li>
+      <li routerLinkActive="active" class="nav-item" mdbWavesEffect>
+        <a routerLink="/#" class="nav-link waves-light">About</a>
+      </li>
+      <li routerLinkActive="active" class="nav-item" mdbWavesEffect>
+        <a routerLink="/#" class="nav-link waves-light">Sell</a>
+      </li>
+    </ul>
 
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#loginModal" (click)="login.show()" mdbWaveEffect><i class="fa fa-user"></i>
+          Register/Sign In</a>
+      </li>
+    </ul>
+  </links>
+</mdb-navbar>
 
 <router-outlet></router-outlet>
+
+<!-- Modal Login -->
+<div mdbModal #login="mdbModal" class="modal fade up" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="login.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input type="email" id="defaultForm-email" class="form-control validate" mdbInputDirective>
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input style="margin-bottom: none !important;" type="password" id="defaultForm-pass" class="form-control validate"
+            mdbInputDirective>
+          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button mdbBtn color="default" class="waves-light" mdbWavesEffect>Login</button>
+      </div>
+      <div class="text-center">
+        <a href="#">Forgot password?</a>
+        <p>Don't have an account yet? <a style="color: #0084C9;" data-dismiss="modal" aria-label="Close" (click)="login.hide(); signup.show()">Signup
+            here</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Signup -->
+<div mdbModal #signup="mdbModal" class="modal fade up" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign Up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="signup.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input type="email" id="defaultForm-email" class="form-control validate" mdbInputDirective>
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input style="margin-bottom: none !important;" type="password" id="defaultForm-pass1" class="form-control validate"
+            mdbInputDirective>
+          <label data-error="wrong" data-success="right" for="defaultForm-pass1">Your password</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input style="margin-bottom: none !important;" type="password" id="defaultForm-pass2" class="form-control validate"
+            mdbInputDirective>
+          <label data-error="wrong" data-success="right" for="defaultForm-pass2">Confirm your password</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button mdbBtn color="default" class="waves-light" mdbWavesEffect>Sign up</button>
+      </div>
+      <div class="text-center">
+        <p>Already have an account?<a style="color: #0084C9;" data-dismiss="modal" aria-label="Close" (click)="signup.hide(); login.show()"> Sign in
+            here</a></p>
+      </div>
+    </div>
+  </div>
+</div>
