@@ -10,3 +10,14 @@
   ::-ms-input-placeholder { /* Microsoft Edge */
     color: white;
   }
+
+  // icon size responsive
+  @media only screen and (max-width: 576px) {
+    .fa-4x {
+        font-size: 3em;
+    }
+
+    #categories .container {
+        max-width: 100%;
+    }
+}
